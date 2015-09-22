@@ -7,6 +7,23 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>web</name>
 	<url>http://maven.apache.org</url>
+	<properties>
+	    <project1Version>1.0.0</project1Version>
+	    <project2Version>1.0.0</project2Version>
+	  </properties>
+	  
+	<repositories>		
+		<repository>
+		    <id>com.springsource.repository.bundles.release</id>
+		    <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+		    <url>http://repository.springsource.com/maven/bundles/release</url>
+		</repository>
+		<repository>
+		    <id>com.springsource.repository.bundles.external</id>
+		    <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+		    <url>http://repository.springsource.com/maven/bundles/external</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -14,38 +31,26 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>1.6.12</version>
-		</dependency>
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>1.6.12</version>
-		</dependency>
-
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
-		</dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.2.3</version>
+        </dependency>
+		
 		<dependency>
 			<groupId>servletapi</groupId>
 			<artifactId>servletapi</artifactId>
 			<version>2.4</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
+
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.1.1</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
@@ -55,30 +60,31 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>3.1.0.RELEASE</version>
+			<version>4.2.1.RELEASE</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
-			<version>3.1.0.RELEASE</version>
+			<version>4.2.1.RELEASE</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>3.1.0.RELEASE</version>
+			<version>4.2.1.RELEASE</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>3.1.0.RELEASE</version>
+			<version>4.0.2.RELEASE</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>3.1.0.RELEASE</version>
+			<version>4.0.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-dbcp</groupId>
