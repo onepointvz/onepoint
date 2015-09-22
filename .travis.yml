@@ -1,0 +1,10 @@
+language: java
+script: mvn package -Pvzwallet
+deploy:
+  provider: openshift
+  user: "skrishna.joy@gmail.com"
+  password: "Pr3d@t0R$" # can be encrypted
+  domain: "krishs"
+  app: "vzwallet"
+  skip_cleanup: true
+  #deployment_branch: "vztest"
