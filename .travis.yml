@@ -1,5 +1,5 @@
 language: java
-script: mvn package -Pvzwallet
+script: mvn package -Popenshift
 deploy:
   provider: openshift
   user: "skrishna.joy@gmail.com"
