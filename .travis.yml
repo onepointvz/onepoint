@@ -1,5 +1,5 @@
 language: java
-script: mvn package -Popenshift
+script: mvn install -Popenshift
 deploy:
   provider: openshift
   user: "skrishna.joy@gmail.com"
