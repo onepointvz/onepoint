@@ -12,19 +12,19 @@ Ext.define('wallet.view.LoginView',{
 	items: [{
 		xtype: 'container',
 		region: 'north',
-		height: '40%'
+		height: '30%'
 	},{
 		xtype: 'container',
 		region: 'south',
-		height: '40%'
+		height: '30%'
 	},{
 		xtype: 'container',
 		region: 'east',
-		width: '30%'
+		width: '20%'
 	},{
 		xtype: 'container',
 		region: 'west',
-		width: '30%'
+		width: '20%'
 	},{
 		xtype: 'panel',
 		title: 'Login',
@@ -44,7 +44,7 @@ Ext.define('wallet.view.LoginView',{
 			},
 			items: [{
 				xtype: 'textfield',
-				fieldLabel: '<font size="3px" style="font-weight:bold">Let\'s start by verifying your phone number</font>',
+				fieldLabel: '<b>Let\'s start by verifying your phone number</b>',
 				labelSeparator: '',
 				labelAlign: 'top',
 				maskRe: /^[0-9\b]+$/,
