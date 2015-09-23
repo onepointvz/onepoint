@@ -6,29 +6,38 @@ Ext.define('wallet.view.DecisionView',{
 	extend: 'Ext.container.Container',
 	height: '100%',
 	layout: 'border',
-	style: 'background-color: #FFFFFF;background:url(res/images/vz_logo.jpg)',
+	style: 'background-color: #FFFFFF;background: url(res/images/Verizon_Logo.jpg)',
 	items:[{
 		xtype: 'container',
 		region: 'north',
-		height: '37%'
+		height: '20%'
 	},{
 		xtype: 'container',
 		region: 'south',
-		height: '30%'
+		height: '20%'
 	},{
 		xtype: 'container',
 		region: 'east',
-		width: '37%'
+		width: '27%'
 	},{
 		xtype: 'container',
 		region: 'west',
-		width: '40%'
+		width: '30%'
 	},{
 		xtype: 'panel',
-		title: 'Actions',
+		title: '<div class="redFont">Actions</div>',
 		region: 'center',
+		tools: [{
+			type: 'mytool',
+			width: 'auto',
+			renderTpl: [
+				'<img id="" src="res/images/Logout.png" role="presentation" height="15" width="15"/>'
+			],
+			handler: function() {
+			}
+		}],
 //		style: 'border:2px solid rgb(17,88,130);border-radius: 15px;',
-		bodyPadding: '20 20 20 20',
+		bodyPadding: '20 20 20 40',
 		width: '100%',
 //		padding: '10% 10% 10% 10%',
 		height: '100%',

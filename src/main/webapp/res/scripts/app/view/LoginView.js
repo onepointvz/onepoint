@@ -8,7 +8,7 @@ Ext.define('wallet.view.LoginView',{
 		type: 'border'
 	},
 	height: '100%',
-	style: 'background-color: #FFFFFF;background:url(res/images/vz_logo.jpg) 50% 50%;',
+	style: 'background-color: #FFFFFF;background: url(res/images/Verizon_Logo.jpg)',
 	items: [{
 		xtype: 'container',
 		region: 'north',
@@ -20,17 +20,18 @@ Ext.define('wallet.view.LoginView',{
 	},{
 		xtype: 'container',
 		region: 'east',
-		width: '20%'
+		width: '15%'
 	},{
 		xtype: 'container',
 		region: 'west',
-		width: '20%'
+		width: '15%'
 	},{
 		xtype: 'panel',
-		title: 'Login',
+		title: '<div class="redFont">Login</div>',
 		region: 'center',
 		width: '100%',
 		height: '100%',
+		style: 'background:url(res/images/vz_logo.jpg) 50% 50%;',
 		layout:{
 			type: 'vbox',
 			pack: 'center'
@@ -44,7 +45,7 @@ Ext.define('wallet.view.LoginView',{
 			},
 			items: [{
 				xtype: 'textfield',
-				fieldLabel: '<b>Let\'s start by verifying your phone number</b>',
+				fieldLabel: 'Let\'s start by verifying your phone number',
 				labelSeparator: '',
 				labelAlign: 'top',
 				maskRe: /^[0-9\b]+$/,
