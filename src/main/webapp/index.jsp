@@ -6,13 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>VZWallet</title>
 <!--link rel="stylesheet" href="/vzwallet/res/scripts/packages/ext-theme-neptune/build/resources/ext-theme-neptune-all.css" /-->
-<!--link rel="stylesheet" href="/vzwallet/res/scripts/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css" /-->
-<link rel="stylesheet" href="/vzwallet/res/scripts/packages/ext-theme-classic-sandbox/build/resources/ext-theme-classic-sandbox-all.css" />
-<script type="text/javascript" src="/vzwallet/res/scripts/ext-all-debug.js" ></script>
-<script type="text/javascript" src="/vzwallet/res/scripts/app/entry.js" ></script>
+<link rel="stylesheet" href="res/scripts/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css" />
+<script type="text/javascript" src="res/scripts/ext-all-debug.js" ></script>
+<script type="text/javascript" src="res/scripts/app/entry.js" ></script>
 </head>
 <body>
-<script>
-</script>
 </body>
 </html>

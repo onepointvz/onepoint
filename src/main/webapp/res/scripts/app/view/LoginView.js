@@ -8,7 +8,7 @@ Ext.define('wallet.view.LoginView',{
 		type: 'border'
 	},
 	height: '100%',
-	style: 'background-color: #FFFFFF;background:url(/vzwallet/images/vz_logo.jpg) 50% 50%;',
+	style: 'background-color: #FFFFFF;background:url(res/images/vz_logo.jpg) 50% 50%;',
 	items: [{
 		xtype: 'container',
 		region: 'north',

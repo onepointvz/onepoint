@@ -6,7 +6,7 @@ Ext.define('wallet.view.CashView',{
 	extend: 'Ext.container.Container',
 	height: '100%',
 	layout: 'border',
-	style: 'background-color: #FFFFFF;background:url(/vzwallet/images/vz_logo.jpg)',
+	style: 'background-color: #FFFFFF;background:url(res/images/vz_logo.jpg)',
 	items:[{
 		xtype: 'container',
 		region: 'north',
