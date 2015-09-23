@@ -2,9 +2,9 @@ language: java
 script: mvn install -Popenshift
 deploy:
   provider: openshift
-  user: "skrishna.joy@gmail.com"
-  password: "Pr3d@t0R$" # can be encrypted
-  domain: "krishs"
-  app: "vzwallet"
+  user: "vzwallet@gmail.com"
+  password: "Verizon1!" # can be encrypted
+  domain: "vzw"
+  app: "onepoint"
   skip_cleanup: true
   #deployment_branch: "vztest"
