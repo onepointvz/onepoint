@@ -20,7 +20,7 @@
 
 
 
-	<http auto-config='true'>
+	<!-- <http auto-config='true'>
 		<intercept-url pattern="/**" access="ROLE_USER" />
 	</http>
 
@@ -30,5 +30,5 @@
 			<jdbc-user-service data-source-ref="dataSource" />
 		</authentication-provider>
 		
-	</authentication-manager>
+	</authentication-manager> -->
 </beans:beans>
