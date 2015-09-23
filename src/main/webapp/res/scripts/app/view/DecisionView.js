@@ -48,7 +48,7 @@ Ext.define('wallet.view.DecisionView',{
 			},
 			items:[{
 				xtype: 'container',
-				html: '<img src="/vzwallet/res/images/CashIcon.png" height="50" width="50"/>'
+				html: '<img src="/vzwallet/res/images/Load_Cash.jpg" height="50" width="50"/>'
 			},{
 				xtype: 'tbspacer',
 				width: 10
@@ -67,7 +67,7 @@ Ext.define('wallet.view.DecisionView',{
 			},
 			items:[{
 				xtype: 'container',
-				html: '<img src="/vzwallet/res/images/Register_Payee.png" height="50" width="50"/>'
+				html: '<img src="/vzwallet/res/images/Payee.jpg" height="50" width="50"/>'
 			},{
 				xtype: 'tbspacer',
 				width: 10
@@ -86,7 +86,10 @@ Ext.define('wallet.view.DecisionView',{
 			},
 			items:[{
 				xtype: 'container',
-				html: '<img src="/vzwallet/res/images/BillPay.png" height="40" width="60"/>'
+				html: '<img src="/vzwallet/res/images/Money_Transfer.jpg" height="50" width="50"/>'
+			},{
+				xtype: 'tbspacer',
+				width: 10
 			},{
 				xtype: 'container',
 				height: '100%',
@@ -102,7 +105,7 @@ Ext.define('wallet.view.DecisionView',{
 			},
 			items:[{
 				xtype: 'container',
-				html: '<img src="/vzwallet/res/images/Offers.png" height="50" width="50"/>'
+				html: '<img src="/vzwallet/res/images/Loyalty_Offers.jpg" height="50" width="50"/>'
 			},{
 				xtype: 'tbspacer',
 				width: 10
