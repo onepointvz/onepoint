@@ -4,8 +4,8 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<!-- <mapping class="com.vzw.wallet.vzwallet.model.Person"/>
-		<mapping class="com.vzw.wallet.vzwallet.model.User"/>
+		<mapping class="com.vzw.wallet.model.User"/>
+		<!--  <mapping class="com.vzw.wallet.vzwallet.model.User"/>
 		<mapping class="com.vzw.wallet.vzwallet.model.Authority"/> -->		
     </session-factory>
 </hibernate-configuration>

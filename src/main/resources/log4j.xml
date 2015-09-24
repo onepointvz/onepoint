@@ -10,16 +10,24 @@
 
    <appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
       <param name="append" value="true"/>
-      <param name="file" value="log.txt"/>
+      <param name="file" value="/var/lib/openshift/560282830c1e66ea600000d6/app-root/logs/onepoint.log"/>
       <layout class="org.apache.log4j.PatternLayout">
          <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p [%c{1}] %m%n"/>
       </layout>
    </appender>
-
+      
+    
+   <logger name="com.vzw.wallet">
+	   <level value="error" />
+	   <appender-ref ref="consoleAppender"/>
+	   <appender-ref ref="fileAppender"/>
+   </logger>
+       
    <root>
-      <level value="INFO"/>
-      <appender-ref ref="consoleAppender"/>
-      <appender-ref ref="fileAppender"/>
+	   <!-- <level value="INFO"/> -->
+	   <priority value="info" />
+	   <appender-ref ref="consoleAppender"/>
+	   <appender-ref ref="fileAppender"/>
    </root>
 
 </log4j:configuration>

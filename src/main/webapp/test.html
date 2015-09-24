@@ -7,11 +7,13 @@
 			var hostName = 'http://' + $("#hostName").val();
 			var apiPath = $("#restPath").val();
 			var requestJsonVal = $("#requestJson").val();
+			var method = $("#httpMethodSel").val();
 			console.log(hostName + apiPath);
 			$.ajax({
 			   url: hostName + apiPath,
-			   type: 'GET',
-			   data: requestJsonVal,
+			   type: method,
+			   contentType: 'application/json',
+			   data: requestJsonVal,			   
 			   error: function() {
 				 $("#responseJson").val('An error has occurred');
 			   },			   
@@ -32,6 +34,15 @@
 		<tr>
 			<td>Rest API Path:</td>
 			<td><input type="text" id="restPath" value="" size="50"/></td>
+		</tr>
+		<tr>
+			<td>Http Method:</td>
+			<td>
+				<select id="httpMethodSel">
+				  <option value="POST">POST</option>
+				  <option value="GET">GET</option>				  
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<td>Request Json:</td>
