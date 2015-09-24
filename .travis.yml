@@ -1,5 +1,11 @@
 language: java
 script: mvn install -Popenshift
+notifications:
+  email:
+      recipients:
+        forsrinivasan@gmail.com
+        anthonilawrance@gmail.com
+        skrishna.joy@gmail.com
 deploy:
   provider: openshift
   user: "vzwallet@gmail.com"
