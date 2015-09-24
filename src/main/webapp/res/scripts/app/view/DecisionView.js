@@ -18,11 +18,11 @@ Ext.define('wallet.view.DecisionView',{
 	},{
 		xtype: 'container',
 		region: 'east',
-		width: '27%'
+		width: '20%'
 	},{
 		xtype: 'container',
 		region: 'west',
-		width: '30%'
+		width: '20%'
 	},{
 		xtype: 'panel',
 		title: '<div class="redFont">Actions</div>',

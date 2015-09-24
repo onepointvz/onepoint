@@ -10,7 +10,7 @@ Ext.define('wallet.view.CashView',{
 	items:[{
 		xtype: 'container',
 		region: 'north',
-		height: '27%'
+		height: '20%'
 	},{
 		xtype: 'container',
 		region: 'south',
@@ -18,11 +18,11 @@ Ext.define('wallet.view.CashView',{
 	},{
 		xtype: 'container',
 		region: 'east',
-		width: '37%'
+		width: '20%'
 	},{
 		xtype: 'container',
 		region: 'west',
-		width: '40%'
+		width: '20%'
 	},{
 		xtype: 'panel',
 		title: '<div class="redFont">Payment Options</div>',

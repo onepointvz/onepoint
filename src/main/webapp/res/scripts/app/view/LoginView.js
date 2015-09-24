@@ -12,11 +12,11 @@ Ext.define('wallet.view.LoginView',{
 	items: [{
 		xtype: 'container',
 		region: 'north',
-		height: '30%'
+		height: '25%'
 	},{
 		xtype: 'container',
 		region: 'south',
-		height: '30%'
+		height: '25%'
 	},{
 		xtype: 'container',
 		region: 'east',
