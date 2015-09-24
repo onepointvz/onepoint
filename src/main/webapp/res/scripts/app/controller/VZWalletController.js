@@ -42,8 +42,8 @@ Ext.define('wallet.controller.VZWalletController',{
 			},
 			'button[itemId=cashGoBack]': {
 				'click': function(){
-					this.hideAllViews();
-					this.getDecisionview().show();
+					/*this.hideAllViews();
+					this.getDecisionview().show();*/
 				}
 			}
 		});
