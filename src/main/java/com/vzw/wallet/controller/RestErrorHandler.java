@@ -17,18 +17,24 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.vzw.wallet.model.ErrorMessage;
+import com.vzw.wallet.util.Utils;
+import com.vzw.wallet.util.Constants;
+import com.vzw.wallet.model.Response;
 import com.vzw.wallet.model.VzFieldError;
 
 @ControllerAdvice
 public class RestErrorHandler {
+	
+	@Autowired 
+	private Utils utils;
 
 	@Autowired
     private MessageSource messageSource;
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
-    public ErrorMessage handleException(MethodArgumentNotValidException ex) {
+    public Response handleException(MethodArgumentNotValidException ex) {
+    	Response response = this.utils.getResponse(Constants.ERROR_CODE_FIELD_ERRORS, "ERROR_CODE_FIELD_ERRORS");
     	List<FieldError> fieldErrors = ex.getBindingResult().getFieldErrors();
 	    List<ObjectError> globalErrors = ex.getBindingResult().getGlobalErrors();
 	    List<VzFieldError> errors = new ArrayList<VzFieldError>();
@@ -42,13 +48,12 @@ public class RestErrorHandler {
 	        VzFieldError vzfieldError = new VzFieldError(fieldError.getField(), error);
 	        errors.add(vzfieldError);
 	    }
-	    
+
 	    for (ObjectError objectError : globalErrors) {
 	        errors.add(new VzFieldError(objectError.getObjectName(), objectError.getDefaultMessage()));
 	    }
 	    
-	    ErrorMessage errorMessage = new ErrorMessage();
-	    errorMessage.setErrors(errors);
-	    return errorMessage;
+	    response.setErrors(errors);
+	    return response;
 	}
 }

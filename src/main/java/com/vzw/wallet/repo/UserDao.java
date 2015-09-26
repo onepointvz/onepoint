@@ -14,12 +14,12 @@ public class UserDao implements BaseDao{
 	@Autowired
 	SessionFactory sessionFactory;
 	
-	public User insertUser(User user){
+	public User insertUser(User user) {
 		sessionFactory.getCurrentSession().save(user);
 		return user;
 	}
 	
-	public User getUserByMdn(String mdn){
+	public User getUserByMdn(String mdn) {
 		Query query = null;
 		
 		try {
@@ -32,7 +32,7 @@ public class UserDao implements BaseDao{
 			e.printStackTrace();
 		}
 		
-	    return (User) query.list().get(0);
+	    return (User) ((query.list() == null || query.list().size() == 0) ? null : query.list().get(0));
 	}
 	
 }

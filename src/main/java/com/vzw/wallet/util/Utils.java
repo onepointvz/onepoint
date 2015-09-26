@@ -2,6 +2,8 @@ package com.vzw.wallet.util;
 
 import java.util.Locale;
 
+import com.vzw.wallet.model.Response;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -23,5 +25,12 @@ public class Utils {
 		}
 
 		return message;
+	}
+	
+	public Response getResponse(int errorCode, String errorMessageKey){
+		Response response = new Response();
+		response.setErrorCode(errorCode);
+		response.setErrorMessage(this.getMessage(errorMessageKey));
+		return response;
 	}
 }

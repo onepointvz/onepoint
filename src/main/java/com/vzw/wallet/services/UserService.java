@@ -21,6 +21,9 @@ public class UserService {
 	@Autowired 
 	private HttpSession httpSession;
 	
+	@Autowired
+	private CoreBankingService coreBankingService;
+	
 	@Autowired 
 	private Utils utils;
 
@@ -32,12 +35,10 @@ public class UserService {
 			User user = this.userDao.getUserByMdn(mdn);
 			
 			if(user == null) {
-				response.setErrorCode(Constants.ERROR_CODE_NOT_REGISTERED);
-				response.setErrorMessage(this.utils.getMessage("ERROR_CODE_NOT_REGISTERED"));
+				response = this.utils.getResponse(Constants.ERROR_CODE_NOT_REGISTERED, "ERROR_CODE_NOT_REGISTERED");
 			}
 			else {
-				response.setErrorCode(Constants.ERROR_CODE_SUCCESS);
-				response.setErrorMessage(this.utils.getMessage("ERROR_CODE_SUCCESS"));
+				response = this.utils.getResponse(Constants.ERROR_CODE_SUCCESS, "ERROR_CODE_SUCCESS");
 				response.setUser(user);
 			}
 		} 
@@ -55,14 +56,13 @@ public class UserService {
 		try {
 			user.setVzwUser(user.getMdn().startsWith("9"));
 			this.userDao.insertUser(user);
-			response.setErrorCode(Constants.ERROR_CODE_SUCCESS);
-			response.setErrorMessage(this.utils.getMessage("ERROR_CODE_SUCCESS"));
+			this.coreBankingService.createBankingAccount(user);
+			response = this.utils.getResponse(Constants.ERROR_CODE_SUCCESS, "ERROR_CODE_SUCCESS");
 			response.setUser(user);
 			this.httpSession.setAttribute(Constants.CURRENT_LOGGED_IN_USER, user);
 		}
 		catch(Exception e){
-			response.setErrorCode(Constants.ERROR_CODE_UNABLE_REGISTERED);
-			response.setErrorMessage(this.utils.getMessage("ERROR_CODE_UNABLE_REGISTERED"));
+			response = this.utils.getResponse(Constants.ERROR_CODE_UNABLE_REGISTERED, "ERROR_CODE_UNABLE_REGISTERED");
 		}
 		
 		return response;
@@ -74,20 +74,16 @@ public class UserService {
 		User user = this.userDao.getUserByMdn(userParam.getMdn());
 		
 		if(user == null) {
-			response.setErrorCode(Constants.ERROR_CODE_NOT_REGISTERED);
-			response.setErrorMessage(this.utils.getMessage("ERROR_CODE_NOT_REGISTERED"));
+			response = this.utils.getResponse(Constants.ERROR_CODE_NOT_REGISTERED, "ERROR_CODE_NOT_REGISTERED");
 		}
 		else {
-			System.out.println(user.getPassword() + ", " + userParam.getPassword());
 			if(user.getPassword().equals(userParam.getPassword())) {
-				response.setErrorCode(Constants.ERROR_CODE_SUCCESS);
-				response.setErrorMessage(this.utils.getMessage("ERROR_CODE_SUCCESS"));
+				response = this.utils.getResponse(Constants.ERROR_CODE_SUCCESS, "ERROR_CODE_SUCCESS");
 				response.setUser(user);
 				this.httpSession.setAttribute(Constants.CURRENT_LOGGED_IN_USER, user);
 			}
-			else {
-				response.setErrorCode(Constants.ERROR_CODE_NOT_LOGGED_IN);
-				response.setErrorMessage(this.utils.getMessage("ERROR_CODE_NOT_LOGGED_IN"));
+			else {				
+				response = this.utils.getResponse(Constants.ERROR_CODE_NOT_LOGGED_IN, "ERROR_CODE_INVALID_PIN");
 			}
 		}
 				
@@ -96,26 +92,26 @@ public class UserService {
 	
 	public Response getLoggedInUser(){
 		Response response = new Response();
-		User user = (User) this.httpSession.getAttribute(Constants.CURRENT_LOGGED_IN_USER);
+		User user = this.getUserFromSession();
 		
 		if(user == null) {
-			response.setErrorCode(Constants.ERROR_CODE_NOT_LOGGED_IN);
-			response.setErrorMessage(this.utils.getMessage("ERROR_CODE_NOT_LOGGED_IN"));
+			response = this.utils.getResponse(Constants.ERROR_CODE_NOT_LOGGED_IN, "ERROR_CODE_NOT_LOGGED_IN");
 		}
 		else {
-			response.setErrorCode(Constants.ERROR_CODE_SUCCESS);
-			response.setErrorMessage(this.utils.getMessage("ERROR_CODE_SUCCESS"));
+			response = this.utils.getResponse(Constants.ERROR_CODE_SUCCESS, "ERROR_CODE_SUCCESS");
 			response.setUser(user);
 		}
 				
 		return response;
 	}
 	
+	public User getUserFromSession(){
+		return (User) this.httpSession.getAttribute(Constants.CURRENT_LOGGED_IN_USER);
+	}
+	
 	public Response logoutUser(){
 		Response response = new Response();
 		this.httpSession.invalidate();
-		response.setErrorCode(Constants.ERROR_CODE_SUCCESS);
-		response.setErrorMessage(this.utils.getMessage("ERROR_CODE_NOT_LOGGED_IN"));		
-		return response;
+		return this.utils.getResponse(Constants.ERROR_CODE_SUCCESS, "ERROR_CODE_NOT_LOGGED_IN");
 	}
 }
