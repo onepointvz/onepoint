@@ -3,6 +3,7 @@
  */
 Ext.define('wallet.view.LoginView',{
 	alias: 'widget.loginview',
+	itemId: 'loginview',
 	extend: 'Ext.container.Container',
 	layout: {
 		type: 'border'
@@ -39,6 +40,7 @@ Ext.define('wallet.view.LoginView',{
 		items:[{
 			xtype: 'container',
 			width: '100%',
+			padding: '0 0 10 0',
 			layout: {
 				type: 'hbox',
 				pack: 'center'
@@ -55,10 +57,52 @@ Ext.define('wallet.view.LoginView',{
 				emptyText: 'Enter 10-digit mobile number'
 			}]
 		},{
-			xtype: 'tbspacer',
-			height: 10
+			xtype: 'container',
+			width: '100%',
+			itemId: 'pinCnt',
+			hidden: true,
+			padding: '0 0 10 0',
+			layout: {
+				type: 'hbox',
+				pack: 'center'
+			},
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Enter 6 Digit PIN Number',
+				inputType: 'password',
+				labelSeparator: '',
+				labelAlign: 'top',
+				maskRe: /^[0-9\b]+$/,
+				itemId: 'pintText',
+				enforceMaxLength: true,
+				maxLength: 6,
+				emptyText: 'Enter 10-digit mobile number'
+			}]
 		},{
 			xtype: 'container',
+			padding: '0 0 10 0',
+			itemId: 'rePinCnt',
+			hidden: true,
+			width: '100%',
+			layout: {
+				type: 'hbox',
+				pack: 'center'
+			},
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Re-Enter 6 Digit PIN Number',
+				labelSeparator: '',
+				inputType: 'password',
+				labelAlign: 'top',
+				maskRe: /^[0-9\b]+$/,
+				itemId: 'rePintText',
+				enforceMaxLength: true,
+				maxLength: 6,
+				emptyText: 'Enter 10-digit mobile number'
+			}]
+		},{
+			xtype: 'container',
+			padding: '0 0 10 0',
 			width: '100%',
 			layout: {
 				type: 'hbox',
@@ -67,7 +111,6 @@ Ext.define('wallet.view.LoginView',{
 			items: [{
 				xtype: 'button',
 				width: '20%',
-				disabled: true,
 				scale: 'medium',
 				text: 'OK',
 				itemId: 'okBtn'
