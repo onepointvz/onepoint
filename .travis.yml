@@ -8,3 +8,8 @@ deploy:
   app: "onepoint"
   skip_cleanup: true
   #deployment_branch: "vztest"
+notifications:
+  email:
+    - skrishna.joy@gmail.com
+    - forsrinivasan@gmail.com
+    - anthonilawrance@gmail.com
