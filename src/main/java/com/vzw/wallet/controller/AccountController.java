@@ -37,6 +37,7 @@ public class AccountController {
 
 	@RequestMapping(value = "/get/{mdn}", method = RequestMethod.GET)
 	public ResponseEntity<?> getUser(@PathVariable String mdn){	
+		System.out.println("Get MDN...");
 		return new ResponseEntity<Response>(userService.getUserByMdn(mdn), HttpStatus.OK);
 	}
 	
