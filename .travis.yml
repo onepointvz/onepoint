@@ -9,6 +9,7 @@ deploy:
   skip_cleanup: true
   #deployment_branch: "vztest"
 notifications:
+  hipchat: wBPGlg1L8W489S0WptesUhv8qZAhHmDzZUygJ5iQ@vzwonepoint
   email:
     recipients:
       - skrishna.joy@gmail.com
