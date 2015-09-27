@@ -10,6 +10,10 @@ deploy:
   #deployment_branch: "vztest"
 notifications:
   email:
-    - skrishna.joy@gmail.com
-    - forsrinivasan@gmail.com
-    - anthonilawrance@gmail.com
+    recipients:
+      - skrishna.joy@gmail.com
+      - forsrinivasan@gmail.com
+      - anthonilawrance@gmail.com
+      - brainkllr@gmail.com
+    on_success: always
+    on_failure: always
