@@ -1,12 +1,5 @@
-env:
-  global:
-   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-   #   via the "travis encrypt" command using the project repo's public key
-   - secure: "B2LPJQzDSP1yKjItdAn4CLJIJLSoYfyuYSzwz7MEj+f6AHET9zD1MR2drFW615Ej216U49AdHH3/NlgyOUd3vRfuZp611mVa28J0WxgHAtLyd7Lu+Jnv48tRK16bm201Ewrr0q8r2hwuMXsfj0oQZF0jrsfCPabv1gf4jGFiNi1sifjBhUYM+usKnyF5/oZXXfhuhaZg2JHjPXO3L6iDIWC4D6J35+Eg1vMjTtAgMYEx52ZV8vkXE6pWyTzinaUCLiBEkVmCkeO48bF2KV2QK0CLcNZs6HA1v1cAVcDBsMu7OFo12T4eqbCFVDi6cYNqLKIcejCFWafRqtmX1bcyj7H5Xvzzk2aCcCKqMStkTvBDS0L6yj97cfD7FVhBEod5fMhHgalk3DXYSAyqiisnLK+LTmEV7vpeblOI9bL8aTR0l7LCHIrhjRu44ZKtnE1L+R2uUxpOrlWRwS1G2i9UIpECzRQ3Ar0EvtVhdK170HhY+Gmlpjq6KauXv22cYRFB1/Zl3HTkUrzZ85otu4+eGEIod2H0beIem60bYbLys/PP7yLCQgzLdUuax9VcsLRgYMv+qp/i+YTpKOjOibaxFIsW4MhesHhp/Qa2V5cb+NpN30+RfpcFlX8J3cpuGJkHcty3ByFBPUC4q1G8pBY6wnjQPQ+ysiNv6YK1naLouXc="
-
 language: java
 script: mvn install -Popenshift
-
 deploy:
   provider: openshift
   user: "vzwallet@gmail.com"
@@ -23,12 +16,3 @@ notifications:
       - anthonilawrance@gmail.com
     on_success: always
     on_failure: always
-
-addons:
-  coverity_scan:
-    project:
-      name: "onepointvz/onepoint"
-    notification_email: skrishna.joy@gmail.com
-    build_command_prepend: "mvn clean"
-    build_command:   "mvn -DskipTests=true compile"
-    branch_pattern: coverity_scan
