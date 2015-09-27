@@ -7,23 +7,6 @@ env:
 language: java
 script: mvn install -Popenshift
 
-deploy:
-  provider: openshift
-  user: "vzwallet@gmail.com"
-  password: "Verizon1!" # can be encrypted
-  domain: "vzw"
-  app: "onepoint"
-  skip_cleanup: true
-  #deployment_branch: "vztest"
-notifications:
-  email:
-    recipients:
-      - skrishna.joy@gmail.com
-      - forsrinivasan@gmail.com
-      - anthonilawrance@gmail.com
-    on_success: always
-    on_failure: always
-
 addons:
   coverity_scan:
     project:
