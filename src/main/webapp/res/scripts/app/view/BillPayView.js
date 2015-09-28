@@ -1,8 +1,8 @@
 /**
  * 
  */
-Ext.define('wallet.view.AddPayeeView',{
-	alias: 'widget.addpayeeview',
+Ext.define('wallet.view.BillPayView',{
+	alias: 'widget.billpayview',
 	extend: 'Ext.container.Container',
 	layout: {
 		type: 'hbox',
@@ -12,12 +12,13 @@ Ext.define('wallet.view.AddPayeeView',{
 	style: 'background-color: #FFFFFF;background: url(res/images/Verizon_Logo.jpg)',
 	items:[{
 		xtype: 'form',
-		itemId: 'addPayeePanel',
-		title: '<div class="redFont">Register Payee</div>',
+		itemId: 'billPayPanel',
+		title: '<div class="redFont">Money Transer / Bill Pay</div>',
 		width: '75%',
 		autoScroll: true,
 		height: '85%',
 		bodyPadding: 5,
+		autoScroll: true,
 		dockedItems:[{
 			xtype: 'toolbar',
 			dock: 'top',
@@ -48,7 +49,7 @@ Ext.define('wallet.view.AddPayeeView',{
 						fieldLabel: 'Hi,',
 						fieldCls: 'whiteLabelBold',
 						labelCls: 'whiteLabel paddingRight',
-						value: ''
+						value: 'Anthoni'
 					}]
 				},{
 					xtype: 'container',
@@ -63,11 +64,11 @@ Ext.define('wallet.view.AddPayeeView',{
 						xtype: 'displayfield',
 						type: 'nameField',
 						itemId: 'balField',
-						labelWidth: 130,
+						labelWidth: 150,
 						fieldLabel: 'Account Balance',
 						fieldCls: 'whiteLabelBold',
 						labelCls: 'whiteLabel paddingRight',
-						value: ''
+						value: '50$'
 					}]
 				}]
 				
@@ -80,15 +81,6 @@ Ext.define('wallet.view.AddPayeeView',{
 				'<img id="" src="res/images/Logout.png" role="presentation" height="15" width="15"/>'
 			],
 			handler: function() {
-				Ext.Ajax.request({
-					url: baseOnePointURL+'/account/logout',
-					success: function(response) {
-						var response = Ext.decode(response.responseText);
-						if (response.errorCode === '0') {
-							window.location.href = 'index.jsp';
-						}						
-					}
-				});
 				window.location.href = 'index.jsp';
 			}
 		}],
@@ -107,30 +99,41 @@ Ext.define('wallet.view.AddPayeeView',{
 				},
 				items: [{
 					xtype: 'radiofield',
-					name: 'typeOfBill',
-					itemId: 'toBillers',
-					boxLabel: 'Add Beneficiary'
+					name: 'billRadio',
+					itemId: 'payeeRadio',
+					boxLabel: 'Transfer to Payee'
 				}]
 			},{
 				xtype: 'container',
 				width: '75%',
-				itemId: 'toBillersCnt',
+				itemId: 'toPayeeCnt',
 				hidden: true,
-				padding: '0 0 0 20',
+				padding: '0 0 0 30',
 				layout: {
 					type: 'vbox',
 					pack: 'start',
 					align: 'left'
 				},
 				items: [{
-					xtype: 'textfield',
-					name: 'payeeName',
-					fieldLabel: 'Nick Name'
-				},{
-					xtype: 'textfield',
-					maskRe: /^[0-9\b]+$/,
-					name: 'accountNumber',
-					fieldLabel: 'MDN'
+					xtype: 'container',
+					defaults:{
+						padding: '0 10 0 0',
+					},
+					layout: 'hbox',
+					items:[{
+						xtype: 'combobox',
+						fieldLabel: 'To',
+						itemId: 'toPayee',
+						queryMode: 'local',
+						store: ['Anthoni', 'Srini', 'Krishna'],
+						value: 'Srini'
+					},{
+						xtype: 'textfield',
+						labelWidth: 120,
+						fieldLabel: 'Enter Amount ($)',
+						maskRe: /^[0-9\b]+$/,
+						beforeLabelTextTpl: '<span style="color:red;">*</span>'
+					}]
 				}]
 			},{
 				xtype: 'container',
@@ -142,73 +145,32 @@ Ext.define('wallet.view.AddPayeeView',{
 				},
 				items: [{
 					xtype: 'radiofield',
-					name: 'typeOfBill',
-					itemId: 'toAccount',
-					boxLabel: 'Add Billers'
+					name: 'billRadio',
+					itemId: 'billerRadio',
+					boxLabel: 'Transfer to Billers'
 				}]
 			},{
 				xtype: 'container',
 				width: '75%',
-				itemId: 'toAccountCnt',
+				itemId: 'toBillCnt',
 				hidden: true,
-				padding: '0 0 0 20',
+				padding: '0 0 0 30',
 				layout: {
 					type: 'vbox',
 					pack: 'start',
 					align: 'left'
 				},
 				items: [{
-					xtype: 'textfield',
-					maskRe: /^[0-9\b]+$/,
-					fieldLabel: 'Account No'
-				},{
-					xtype: 'fieldcontainer',
-					layout: 'hbox',
-					defaults: {
-						padding: '0 10 0 0',
-					},
-					items:[{
 						xtype: 'combobox',
-						fieldLabel: 'Type Of Billers',
-						itemId: 'typeOfBillers',
+						fieldLabel: 'Select Biller',
+						itemId: 'toBiller',
 						queryMode: 'local',
 						store: ['Insurance','Electricity','Telephone'],
 						value: 'Insurance'
-					},{
-						xtype: 'combobox',
-						queryMode: 'local',
-						itemId: 'sectors',
-						store: new Ext.data.Store({
-							fields: ['displayField', 'valueField'],
-							data:[{
-								'displayField': 'Athena',
-								'valueField': 'Athena'
-							}]
-						}),
-						displayField: 'displayField',
-						valueField: 'valueField',
-						value: 'Athena'
 					}]
-				}]
 			},{
 				xtype: 'tbspacer',
 				height: 20
-			},{
-				xtype: 'container',
-				width: '75%',
-				layout: {
-					type: 'vbox',
-					pack: 'start',
-					align: 'left'
-				},
-				items: [{
-					xtype: 'fieldcontainer',
-					defaultType: 'checkboxfield',
-					layout: 'hbox',
-					items:[{
-						boxLabel: 'Auto Pay'
-					}]
-				}]
 			},{
 				xtype: 'container',
 				width: '100%',
@@ -220,7 +182,7 @@ Ext.define('wallet.view.AddPayeeView',{
 				items: [{
 					xtype: 'button',
 					width: '20%',
-					itemId: 'payeeGoBack',
+					itemId: 'billGoBack',
 					text: 'Back'
 				},{
 					xtype: 'tbspacer',
@@ -228,23 +190,8 @@ Ext.define('wallet.view.AddPayeeView',{
 				},{
 					xtype: 'button',
 					width: '20%',
-					itemId: 'payeeSubmit',
 					text: 'Submit'
 				}]
-			},{
-				xtype: 'tbspacer',
-				height: 20
-			},{
-				xtype: 'container',
-				width: '75%',
-				height: 20,
-				layout: {
-					type: 'vbox',
-					pack: 'center',
-					align: 'center'
-				},
-				itemId: 'payeeResult',
-				html: ''
 			}]
 	}]
 });

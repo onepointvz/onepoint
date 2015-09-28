@@ -1,8 +1,8 @@
 /**
  * 
  */
-Ext.define('wallet.view.AddPayeeView',{
-	alias: 'widget.addpayeeview',
+Ext.define('wallet.view.LoyaltyView',{
+	alias: 'widget.loyaltyview',
 	extend: 'Ext.container.Container',
 	layout: {
 		type: 'hbox',
@@ -12,12 +12,13 @@ Ext.define('wallet.view.AddPayeeView',{
 	style: 'background-color: #FFFFFF;background: url(res/images/Verizon_Logo.jpg)',
 	items:[{
 		xtype: 'form',
-		itemId: 'addPayeePanel',
-		title: '<div class="redFont">Register Payee</div>',
+		itemId: 'loyaltyPanel',
+		title: '<div class="redFont">Loyalty</div>',
 		width: '75%',
 		autoScroll: true,
 		height: '85%',
 		bodyPadding: 5,
+		autoScroll: true,
 		dockedItems:[{
 			xtype: 'toolbar',
 			dock: 'top',
@@ -48,7 +49,7 @@ Ext.define('wallet.view.AddPayeeView',{
 						fieldLabel: 'Hi,',
 						fieldCls: 'whiteLabelBold',
 						labelCls: 'whiteLabel paddingRight',
-						value: ''
+						value: 'Anthoni'
 					}]
 				},{
 					xtype: 'container',
@@ -63,11 +64,11 @@ Ext.define('wallet.view.AddPayeeView',{
 						xtype: 'displayfield',
 						type: 'nameField',
 						itemId: 'balField',
-						labelWidth: 130,
+						labelWidth: 150,
 						fieldLabel: 'Account Balance',
 						fieldCls: 'whiteLabelBold',
 						labelCls: 'whiteLabel paddingRight',
-						value: ''
+						value: '50$'
 					}]
 				}]
 				
@@ -106,17 +107,14 @@ Ext.define('wallet.view.AddPayeeView',{
 					align: 'left'
 				},
 				items: [{
-					xtype: 'radiofield',
-					name: 'typeOfBill',
-					itemId: 'toBillers',
-					boxLabel: 'Add Beneficiary'
+					xtype: 'textfield',
+					fieldLabel: 'Nick Name'
+					
+
 				}]
 			},{
 				xtype: 'container',
 				width: '75%',
-				itemId: 'toBillersCnt',
-				hidden: true,
-				padding: '0 0 0 20',
 				layout: {
 					type: 'vbox',
 					pack: 'start',
@@ -124,12 +122,6 @@ Ext.define('wallet.view.AddPayeeView',{
 				},
 				items: [{
 					xtype: 'textfield',
-					name: 'payeeName',
-					fieldLabel: 'Nick Name'
-				},{
-					xtype: 'textfield',
-					maskRe: /^[0-9\b]+$/,
-					name: 'accountNumber',
 					fieldLabel: 'MDN'
 				}]
 			},{
@@ -141,27 +133,6 @@ Ext.define('wallet.view.AddPayeeView',{
 					align: 'left'
 				},
 				items: [{
-					xtype: 'radiofield',
-					name: 'typeOfBill',
-					itemId: 'toAccount',
-					boxLabel: 'Add Billers'
-				}]
-			},{
-				xtype: 'container',
-				width: '75%',
-				itemId: 'toAccountCnt',
-				hidden: true,
-				padding: '0 0 0 20',
-				layout: {
-					type: 'vbox',
-					pack: 'start',
-					align: 'left'
-				},
-				items: [{
-					xtype: 'textfield',
-					maskRe: /^[0-9\b]+$/,
-					fieldLabel: 'Account No'
-				},{
 					xtype: 'fieldcontainer',
 					layout: 'hbox',
 					defaults: {
@@ -220,7 +191,7 @@ Ext.define('wallet.view.AddPayeeView',{
 				items: [{
 					xtype: 'button',
 					width: '20%',
-					itemId: 'payeeGoBack',
+					itemId: 'loyaltyGoBack',
 					text: 'Back'
 				},{
 					xtype: 'tbspacer',
@@ -228,23 +199,8 @@ Ext.define('wallet.view.AddPayeeView',{
 				},{
 					xtype: 'button',
 					width: '20%',
-					itemId: 'payeeSubmit',
 					text: 'Submit'
 				}]
-			},{
-				xtype: 'tbspacer',
-				height: 20
-			},{
-				xtype: 'container',
-				width: '75%',
-				height: 20,
-				layout: {
-					type: 'vbox',
-					pack: 'center',
-					align: 'center'
-				},
-				itemId: 'payeeResult',
-				html: ''
 			}]
 	}]
 });

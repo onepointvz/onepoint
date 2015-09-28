@@ -11,18 +11,93 @@ Ext.define('wallet.view.CashView',{
 	},
 	style: 'background-color: #FFFFFF;background: url(res/images/Verizon_Logo.jpg)',
 	items:[{
-		xtype: 'panel',
+		xtype: 'form',
+		itemId: 'cashPanel',
 		title: '<div class="redFont">Payments</div>',
 		width: '75%',
 		autoScroll: true,
-		height: '75%',
+		height: '85%',
 		bodyPadding: 5,
 		autoScroll: true,
+		dockedItems:[{
+			xtype: 'toolbar',
+			dock: 'top',
+			style: 'background-color:#cd040c;',
+			padding: 0,
+			items:[{
+				xtype:'container',
+				width: '100%',
+				layout: {
+					type: 'column',
+					columns: 2
+				},
+				items: [{
+					xtype: 'container',
+					width: '100%',
+					columnWidth: 0.5, 
+					layout: {
+						type: 'hbox',
+						pack: 'start',
+						align: 'left'
+					},
+					items:[{
+						xtype: 'displayfield',
+						labelSeparator: '',
+						type: 'nameField',
+						itemId: 'nameField',
+						labelWidth: 15,
+						fieldLabel: 'Hi,',
+						fieldCls: 'whiteLabelBold',
+						labelCls: 'whiteLabel paddingRight',
+						value: ''
+					}]
+				},{
+					xtype: 'container',
+					columnWidth: 0.5,
+					width: '100%',
+					layout: {
+						type: 'hbox',
+						pack: 'end',
+						align: 'right'
+					},
+					items:[{
+						xtype: 'displayfield',
+						type: 'nameField',
+						itemId: 'balField',
+						labelWidth: 130,
+						fieldLabel: 'Account Balance',
+						fieldCls: 'whiteLabelBold',
+						labelCls: 'whiteLabel paddingRight',
+						value: ''
+					}]
+				}]
+				
+			}]
+		}],
 		layout: {
 			type: 'vbox',
 			pack: 'center',
 			align: 'middle'
 		},
+		tools: [{
+			type: 'mytool',
+			width: 'auto',
+			renderTpl: [
+				'<img id="" src="res/images/Logout.png" role="presentation" height="15" width="15"/>'
+			],
+			handler: function() {
+				Ext.Ajax.request({
+					url: baseOnePointURL+'/account/logout',
+					success: function(response) {
+						var response = Ext.decode(response.responseText);
+						if (response.errorCode === '0') {
+							window.location.href = 'index.jsp';
+						}						
+					}
+				});
+				window.location.href = 'index.jsp';
+			}
+		}],
 		items: [{
 				xtype: 'container',
 				width: '75%',
@@ -49,20 +124,23 @@ Ext.define('wallet.view.CashView',{
 				items: [{
 					xtype: 'container',
 					hidden: true,
+					defaultShow: false,
 					itemId: 'creditCardCnt',
 					items: [{
 						xtype: 'textfield',
 						fieldLabel: 'Card Number',
+						maskRe: /^[0-9\b]+$/,
 						value: '4617-8654-0029-9627',
 					},{
 						xtype: 'textfield',
 						fieldLabel: 'CVV',
+						maskRe: /^[0-9\b]+$/,
 						inputType: 'password',
 						width: 140
 					},{
 						xtype: 'textfield',
 						fieldLabel: 'Card Holder Name',
-						value: 'Anthoni Lawrance A'
+						value: ''
 					},{
 						xtype: 'fieldcontainer',
 						fieldLabel: 'Expiry Date',
@@ -112,19 +190,22 @@ Ext.define('wallet.view.CashView',{
 					xtype: 'container',
 					itemId: 'debitCardCnt',
 					hidden: true,
+					defaultShow: false,
 					items: [{
 						xtype: 'textfield',
 						fieldLabel: 'Card Number',
+						maskRe: /^[0-9\b]+$/,
 						value: '4617-8654-0029-9627',
 					},{
 						xtype: 'textfield',
 						fieldLabel: 'CVV',
+						maskRe: /^[0-9\b]+$/,
 						inputType: 'password',
 						width: 140
 					},{
 						xtype: 'textfield',
 						fieldLabel: 'Card Holder Name',
-						value: 'Anthoni Lawrance A'
+						value: ''
 					},{
 						xtype: 'fieldcontainer',
 						fieldLabel: 'Expiry Date',
@@ -174,12 +255,32 @@ Ext.define('wallet.view.CashView',{
 					xtype: 'container',
 					itemId: 'netBankingCnt',
 					hidden: true,
+					defaultShow: false,
 					items: [{
 							xtype: 'combobox',
 							queryMode: 'local',
 							store: ['Select Bank','ICICI Bank','HDFC Bank', 'Axis Bank'],
 							value: 'Select Bank'
 						}]
+				}]
+			},{
+				xtype: 'tbspacer',
+				height: 20
+			},{
+				xtype: 'container',
+				width: '75%',
+				layout: {
+					type: 'vbox',
+					pack: 'start',
+					align: 'left'
+				},
+				items: [{
+					xtype: 'textfield',
+					name: 'loadAmount',
+					itemId: 'loadAmount',
+					maskRe: /^[0-9\b]+$/,
+					labelWidth: 120,
+					fieldLabel: 'Enter Amount ($)'
 				}]
 			},{
 				xtype: 'tbspacer',
@@ -203,7 +304,8 @@ Ext.define('wallet.view.CashView',{
 				},{
 					xtype: 'button',
 					width: '20%',
-					text: 'Continue'
+					itemId: 'cashSubmit',
+					text: 'Submit'
 				}]
 			},{
 				xtype: 'container',

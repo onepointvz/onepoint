@@ -12,11 +12,66 @@ Ext.define('wallet.view.DecisionView',{
 	style: 'background-color: #FFFFFF;background: url(res/images/Verizon_Logo.jpg)',
 	items:[{
 		xtype: 'panel',
+		dockedItems:[{
+			xtype: 'toolbar',
+			dock: 'top',
+			style: 'background-color:#cd040c;',
+			padding: 0,
+			items:[{
+				xtype:'container',
+				width: '100%',
+				layout: {
+					type: 'column',
+					columns: 2
+				},
+				items: [{
+					xtype: 'container',
+					width: '100%',
+					columnWidth: 0.5, 
+					layout: {
+						type: 'hbox',
+						pack: 'start',
+						align: 'left'
+					},
+					items:[{
+						xtype: 'displayfield',
+						labelSeparator: '',
+						type: 'nameField',
+						itemId: 'nameField',
+						labelWidth: 15,
+						fieldLabel: 'Hi,',
+						fieldCls: 'whiteLabelBold',
+						labelCls: 'whiteLabel paddingRight',
+						value: ''
+					}]
+				},{
+					xtype: 'container',
+					columnWidth: 0.5,
+					width: '100%',
+					layout: {
+						type: 'hbox',
+						pack: 'end',
+						align: 'right'
+					},
+					items:[{
+						xtype: 'displayfield',
+						type: 'balField',
+						itemId: 'balField',
+						labelWidth: 130,
+						fieldLabel: 'Account Balance',
+						fieldCls: 'whiteLabelBold',
+						labelCls: 'whiteLabel paddingRight',
+						value: ''
+					}]
+				}]
+				
+			}]
+		}],
 		title: '<div class="redFont">Actions</div>',
 		autoScroll: true,
 		style: 'overflow-x:hidden;overflow-y:auto;',
 		width: '75%',
-		height: '75%',
+		height: '85%',
 		bodyPadding: 5,
 		layout: {
 			type: 'vbox',
@@ -30,6 +85,16 @@ Ext.define('wallet.view.DecisionView',{
 				'<img id="" src="res/images/Logout.png" role="presentation" height="15" width="15"/>'
 			],
 			handler: function() {
+				Ext.Ajax.request({
+					url: baseOnePointURL+'/account/logout',
+					success: function(response) {
+						var response = Ext.decode(response.responseText);
+						if (response.errorCode === '0') {
+							window.location.href = 'index.jsp';
+						}						
+					}
+				});
+				window.location.href = 'index.jsp';
 			}
 		}],
 		items: [{
@@ -113,7 +178,7 @@ Ext.define('wallet.view.DecisionView',{
 					xtype: 'container',
 					height: '100%',
 					width: '100%',
-					html: '<b>Transfer Money /Bill Pay</b>'
+					html: '<b><a href="javascript:void(0);" id="billPay">Transfer Money /Bill Pay</a></b>'
 				}]
 			}]
 		},{
@@ -140,7 +205,7 @@ Ext.define('wallet.view.DecisionView',{
 					xtype: 'container',
 					height: '100%',
 					width: '100%',
-					html: '<b>Loyalty Offers</b>'
+					html: '<b><a href="javascript:void(0);" id="loyalty">Loyalty Offers</a></b>'
 				}]
 			}]
 		}]

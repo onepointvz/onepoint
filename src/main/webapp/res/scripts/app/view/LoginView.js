@@ -27,7 +27,8 @@ Ext.define('wallet.view.LoginView',{
 		region: 'west',
 		width: '15%'
 	},{
-		xtype: 'panel',
+		xtype: 'form',
+		itemId: 'loginForm',
 		title: '<div class="redFont">Login</div>',
 		region: 'center',
 		width: '100%',
@@ -52,9 +53,32 @@ Ext.define('wallet.view.LoginView',{
 				labelAlign: 'top',
 				maskRe: /^[0-9\b]+$/,
 				itemId: 'mdnText',
+				name: 'mdn',
 				enforceMaxLength: true,
 				maxLength: 10,
 				emptyText: 'Enter 10-digit mobile number'
+			}]
+		},{
+			xtype: 'container',
+			width: '100%',
+			itemId: 'nameCnt',
+			hidden: true,
+			padding: '0 0 10 0',
+			layout: {
+				type: 'hbox',
+				pack: 'center'
+			},
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Enter Name',
+				labelSeparator: '',
+				labelAlign: 'top',
+				name: 'userName',
+				itemId: 'name',
+				allowBlank: false,
+				enforceMaxLength: true,
+				minLength: 5,
+				emptyText: 'Minimum 5 Characters'
 			}]
 		},{
 			xtype: 'container',
@@ -74,6 +98,7 @@ Ext.define('wallet.view.LoginView',{
 				labelAlign: 'top',
 				maskRe: /^[0-9\b]+$/,
 				itemId: 'pintText',
+				name: 'password',
 				enforceMaxLength: true,
 				maxLength: 6,
 				emptyText: 'Enter 10-digit mobile number'
